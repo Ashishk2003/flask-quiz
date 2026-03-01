@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard {
+            background: #ffffff;
+            width: 420px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .nav-links {
+            margin-bottom: 20px;
+        }
+
+        .nav-links a {
+            display: block;
+            text-decoration: none;
+            color: white;
+            background: #4a6cf7;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #3a56d4;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .logout {
+            background: #e74c3c !important;
+        }
+
+        .logout:hover {
+            background: #c0392b !important;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+    <h2>Student Dashboard</h2>
+
+    <div class="nav-links">
+        <a href="/student/profile">My Profile</a>
+        <a href="/student/view_quizzes">View Quiz</a>
+        <a href="/student/results">View Results</a>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+
+    <hr>
+
+</div>
+
+</body>
+</html>

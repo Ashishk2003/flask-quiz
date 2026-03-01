@@ -1,0 +1,117 @@
+{% set current_date = date.today().strftime('%Y-%m-%d') %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .profile-card {
+            background: #ffffff;
+            padding: 25px 30px;
+            width: 380px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .profile-card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+            color: #34495e;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .save-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .back-btn {
+            background-color: #7f8c8d;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background-color: #636e72;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="profile-card">
+    <h2>Edit Profile</h2>
+
+    <form method="post">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ student.name }}" required>
+
+        <label>Roll Number</label>
+        <input type="text" name="roll_no" value="{{ student.roll_no }}" required>
+
+        <label>Date of Birth</label>
+        <input type="date" id="dob" name="dob" value="{{ student.dob }}" max="{{ current_date }}" required>
+
+        <label>Phone Number</label>
+        <input type="text" name="phone" value="{{ student.phone }}" required>
+
+        <div class="btn-group">
+            <button type="submit" class="save-btn">Save Changes</button>
+            <a href="{{ url_for('student_profile') }}">
+                <button type="button" class="back-btn">← Back</button>
+            </a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

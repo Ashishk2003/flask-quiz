@@ -6,8 +6,14 @@ import os
 
 app = Flask(__name__)
 app.secret_key = "quiz_secret_key"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_NAME = os.path.join(BASE_DIR, "database.db")
 
-DB_NAME = "database.db"
+with app.app_context():
+    init_db()
+    create_default_teacher()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_NAME = os.path.join(BASE_DIR, "database.db")
 
 # ================= DATABASE =================
 def get_db():
@@ -668,6 +674,4 @@ def logout():
 
 # ================= RUN =================
 if __name__ == "__main__":
-    init_db()
-    create_default_teacher()
     app.run(debug=True)

@@ -667,7 +667,9 @@ def logout():
     return redirect("/")
 
 # ================= RUN =================
+# initialize database for Railway
+init_db()
+create_default_teacher()
+
 if __name__ == "__main__":
-    init_db()
-    create_default_teacher()
-    app.run(debug=True)
+    app.run()

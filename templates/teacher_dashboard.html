@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+    <style>
+        /* ===== Body & Layout ===== */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #34495e;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        /* ===== Links & Navigation ===== */
+        .nav {
+            display: flex;
+            flex-direction: column; /* Stack vertically */
+            align-items: flex-start; /* Align links to the left */
+            margin-bottom: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            margin: 5px 0; /* Spacing between links */
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* ===== Quiz Section ===== */
+        .quiz-section h3 {
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-item {
+            background-color: #ecf0f1;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        .quiz-item b {
+            color: #2c3e50;
+            font-size: 18px;
+        }
+
+        .quiz-item a {
+            text-decoration: none;
+            color: #27ae60;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .quiz-item a:hover {
+            color: #1e8449;
+        }
+
+        .quiz-item .released, 
+        .quiz-item .result-released {
+            color: #27ae60;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            .quiz-item {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Teacher Dashboard</h2>
+
+        <div class="nav">
+            <a href="/teacher/create_student">Create Student</a>
+            <a href="/teacher/create_quiz">Create Quiz</a>
+            <a href="/teacher/profile">Profile</a>
+            <a href="/logout">Logout</a>
+        </div>
+
+        <hr>
+
+        <div class="quiz-section">
+            <h3>Quiz Management</h3>
+
+            {% if quizzes %}
+                {% for q in quizzes %}
+                    <div class="quiz-item">
+                        <b>{{ q.title }}</b>
+
+                        <!-- QUIZ RELEASE -->
+                        {% if q.released == 0 %}
+                            | <a href="{{ url_for('release_quiz', quiz_id=q.id) }}">Release Quiz</a>
+                        {% else %}
+                            | <span class="released">Quiz Released ✅</span>
+                        {% endif %}
+
+                        <!-- RESULT RELEASE (ONLY AFTER QUIZ RELEASE) -->
+                        {% if q.released == 1 %}
+                            {% if q.result_released == 0 %}
+                                | <a href="{{ url_for('release_result', quiz_id=q.id) }}">Release Result</a>
+                            {% else %}
+                                | <span class="result-released">Result Released ✅</span>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No quizzes created.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

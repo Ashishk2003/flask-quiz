@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #ffffff;
+            width: 380px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102,126,234,0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a67d8;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #667eea;
+            font-size: 14px;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Student Registration</h2>
+
+    <form method="POST">
+
+        <input type="text" name="name" placeholder="Full Name" required>
+
+        <input type="email" name="email" placeholder="Email" required>
+
+        <input type="password" name="password" placeholder="Password" required>
+
+        <input type="text" name="phone" placeholder="Phone Number" required>
+
+        <input type="date" name="dob" required>
+
+        <input type="text" name="roll_no" placeholder="Roll Number" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="login-link">
+        <a href="/student/login">Already have an account? Login</a>
+    </div>
+</div>
+
+</body>
+</html>

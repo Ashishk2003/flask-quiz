@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Question</title>
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 700px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        label, h4 {
+            color: #34495e;
+            margin-top: 15px;
+            display: block;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .question-list {
+            margin-top: 30px;
+        }
+
+        .question-item {
+            background: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .question-item a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .question-item a:hover {
+            text-decoration: underline;
+        }
+
+        .finish-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .finish-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Add Question</h2>
+
+    <form method="post">
+        <input type="text" name="question" placeholder="Enter Question" required>
+
+        <label>Question Type</label>
+        <select name="q_type" required>
+            <option value="mcq">MCQ</option>
+            <option value="short">One Word / Sentence</option>
+        </select>
+
+        <h4>MCQ Options (only if MCQ)</h4>
+        <input type="text" name="o1" placeholder="Option 1">
+        <input type="text" name="o2" placeholder="Option 2">
+        <input type="text" name="o3" placeholder="Option 3">
+        <input type="text" name="o4" placeholder="Option 4">
+
+        <input type="text" name="correct" placeholder="Correct Answer" required>
+
+        <button type="submit">Add Question</button>
+    </form>
+
+    <div class="question-list">
+        <h3>Existing Questions</h3>
+
+        {% for q in questions %}
+        <div class="question-item">
+            <span>{{ q.question }}</span>
+            <a href="/teacher/delete_question/{{ q.id }}/{{ quiz_id }}">Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a class="finish-link" href="/teacher/dashboard">✔ Finish & Go to Dashboard</a>
+
+</div>
+
+</body>
+</html>

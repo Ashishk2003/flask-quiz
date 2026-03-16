@@ -98,7 +98,7 @@ def create_default_teacher():
 # ================= LANDING =================
 @app.route("/")
 def index():
-    return "Flask is working"
+    return render_template("index.html")
 # ================= TEACHER =================
 @app.route("/teacher/login", methods=["GET", "POST"])
 def teacher_login():

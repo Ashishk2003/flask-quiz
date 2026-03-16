@@ -7,7 +7,8 @@ import os
 app = Flask(__name__)
 app.secret_key = "quiz_secret_key"
 
-DB_NAME = "database.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_NAME = os.path.join(BASE_DIR, "database.db")
 
 # ================= DATABASE =================
 def get_db():
@@ -666,9 +667,7 @@ def logout():
     return redirect("/")
 
 # ================= RUN =================
-# initialize database for Railway
-init_db()
-create_default_teacher()
-
 if __name__ == "__main__":
-    app.run()
+    init_db()
+    create_default_teacher()
+    app.run(host="0.0.0.0", port=8080)
